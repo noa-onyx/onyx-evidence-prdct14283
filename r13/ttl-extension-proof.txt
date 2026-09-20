@@ -1,0 +1,19 @@
+PRDCT-14283 preview TTL extension proof (namespace dev-pr-13483)
+captured: 2026-09-20 11:31:55Z
+annotation preview.onyx.security/created-at = 1789901600  (2026-09-20 10:53:20Z)
+annotation preview.onyx.security/ttl-hours  = 720   (was 48)
+=> reaper rule (scripts/preview/agent-env.sh): reclaim when (now-created)/3600 >= ttl-hours
+   current age        = 0.6 h
+   expires at         = 2026-10-20 10:53:20Z  (created + 720h)
+   remaining          = 719.4 h  (30.0 days)
+scope: single namespace dev-pr-13483 (PR #13483) only; no repo/platform/global change.
+mechanism: live kubectl annotate on the PR's namespace; demo-lock intentionally NOT used
+           (it rolls every pod + resets localstack S3, which would drop in-flight scan payloads).
+{
+  "preview.onyx.security/created-at": "1789901600",
+  "preview.onyx.security/data-plane-ready": "staging",
+  "preview.onyx.security/image-tag": "pr-13483",
+  "preview.onyx.security/preview-host": "dev-pr-13483.dev.onyx.security",
+  "preview.onyx.security/seed-mode": "staging",
+  "preview.onyx.security/ttl-hours": "720"
+}
